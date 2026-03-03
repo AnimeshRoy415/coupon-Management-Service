@@ -13,7 +13,7 @@ public class CouponUsageHistResponseDto {
     private Long id;
     private Coupon coupon;
     private Cart cart;
-    private LocalDateTime usedAt; // Using LocalDateTime instead of Timestamp
+    private LocalDateTime usedAt;
     private Double discountApplied;
     private Long userId;
 }

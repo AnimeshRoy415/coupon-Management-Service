@@ -18,9 +18,6 @@ public class CartWiseStrategy implements DiscountStrategy{
 
     @Override
     public double applyDiscount(Coupon coupon, Cart cart) {
-        System.out.println("applyDiscount  coupon  :: "+ coupon);
-        System.out.println("applyDiscount  cart  :: "+ cart);
-
 
         double totalPrice = cart.getItems().stream()
                 .mapToDouble(item -> item.getPrice() * item.getQuantity())
@@ -28,26 +25,22 @@ public class CartWiseStrategy implements DiscountStrategy{
 
         cart.setTotalPrice(totalPrice);
 
-        // 1️⃣ Threshold validation
         Double threshold = coupon.getDetails().getThreshold();
-        System.out.println("threshold  : "+ threshold+ " ------ "+"totalPrice   ::  "+ totalPrice);
         if (threshold != null && totalPrice < threshold) {
 //            throw new ConditionNotMeet("Cart value below required threshold!");
             return 0.0;
         }
 
-        // 2️⃣ Calculate raw percentage discount
+        // Calculate raw percentage discount
         double percentage = coupon.getDetails().getDiscountPercentage();
-        System.out.println("Persentage : "+percentage);
         double discount = totalPrice * (percentage / 100);
-        System.out.println("discount  ::  "+ discount);
-        // 3️⃣ Apply max discount cap if present
+        // Apply max discount cap if present
         Double maxCap = coupon.getDetails().getMaxDiscountAmount();
         if (maxCap != null && discount > maxCap) {
             discount = maxCap;
         }
 
-        // 4️⃣ Distribute discount proportionally across items
+        // Distribute discount proportionally across items
         if (totalPrice > 0) {
             for (CartItem item : cart.getItems()) {
 
@@ -58,7 +51,7 @@ public class CartWiseStrategy implements DiscountStrategy{
             }
         }
 
-        // 5️⃣ Update cart totals
+        // Update cart totals
         cart.setTotalDiscount(discount);
         cart.setFinalPrice(totalPrice - discount);
 

@@ -16,7 +16,6 @@ public class ProductWiseValidator implements  CouponValidator{
     @Override
     public void validate(CouponDto dto) {
 
-        System.out.println("ProductWiseValidator");
         DiscountDetails details = dto.getDetails();
 
         if (details.getProductId() == null) {

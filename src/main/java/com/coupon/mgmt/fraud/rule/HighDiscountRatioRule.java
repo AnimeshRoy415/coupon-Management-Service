@@ -38,8 +38,7 @@ public class HighDiscountRatioRule implements FraudRule {
             totalDiscount += history.getDiscountApplied();
             totalCartValue += cart.getTotalPrice();
         }
-        System.out.println("totalDiscount   :::  "+ totalDiscount);
-        System.out.println("totalCartValue   ::: "+ totalCartValue);
+
 
         if (totalCartValue > 0) {
 

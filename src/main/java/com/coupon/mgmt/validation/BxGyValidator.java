@@ -17,7 +17,6 @@ public class BxGyValidator implements CouponValidator {
 
     @Override
     public void validate(CouponDto dto) {
-        System.out.println("WERTYUIOIUYTREW");
 
         DiscountDetails details = dto.getDetails();
 

@@ -19,7 +19,6 @@ public class RepeatedUsageRule implements FraudRule {
 //        long usageCount = repository.findAll().stream()
 //                .filter(h -> h.getUserId().equals(userId))
 //                .count();
-        System.out.println(userId);
 
         long usageCount = repository.countByUserId(userId);
 

@@ -12,8 +12,7 @@ public class FraudDetectionServiceImpl implements FraudDetectionService {
     private final List<FraudRule> rules;
 
     public FraudDetectionServiceImpl(List<FraudRule> rules) {
-        for (FraudRule rule : rules) {
-            System.out.println("Rule : "+ rule);        }
+
         this.rules = rules;
     }
 

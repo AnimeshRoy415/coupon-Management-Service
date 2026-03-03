@@ -32,7 +32,7 @@ public class CouponUsageHistory {
     private String cart;
 
     @Column(nullable = false)
-    private LocalDateTime usedAt; // Using LocalDateTime instead of Timestamp
+    private LocalDateTime usedAt;
 
     @Column(nullable = false)
     private Double discountApplied;

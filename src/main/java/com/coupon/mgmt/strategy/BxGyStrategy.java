@@ -20,7 +20,6 @@ public class BxGyStrategy implements DiscountStrategy{
     @Override
     public double applyDiscount(Coupon coupon, Cart cart) {
 
-        // 👇 Move calculateBxGyDiscount logic here
         return calculateBxGyDiscount(coupon, cart);
     }
 

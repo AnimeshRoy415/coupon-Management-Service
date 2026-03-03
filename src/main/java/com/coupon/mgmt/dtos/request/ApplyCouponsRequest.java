@@ -9,7 +9,6 @@ public class ApplyCouponsRequest {
     private List<Long> couponIds;
     private Cart cart;
 
-    // Getters and Setters
     public List<Long> getCouponIds() {
         return couponIds;
     }

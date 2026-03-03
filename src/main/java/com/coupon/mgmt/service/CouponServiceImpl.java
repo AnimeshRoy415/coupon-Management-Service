@@ -67,7 +67,6 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public Coupon createCoupon(CouponDto couponDto) {
 
-        System.out.println("couponDto   :::  "+ couponDto.toString());
         CouponType type = CouponType.valueOf(couponDto.getType());
         validatorFactory.getValidator(type).validate(couponDto);
         Coupon coupon = CouponDto.toEntity(couponDto);
@@ -131,9 +130,6 @@ public class CouponServiceImpl implements CouponService {
                 continue;
             }
 
-            System.out.println("strategy  ::: "+ strategy);
-            System.out.println("coupon  ::  "+ coupon);
-            System.out.println("Cart  ::: "+ cart);
             double discount =
                     strategy.applyDiscount(coupon, cart);
 
@@ -159,7 +155,6 @@ public class CouponServiceImpl implements CouponService {
 
         long usageCount = couponUsageHistoryRepository
                 .countByCouponIdAndUserId(coupon.getId(), userId);
-        System.out.println("usageCount  :::  "+ usageCount);
 
         if (usageCount >= coupon.getMaxUsagePerUser()) {
             throw new IllegalArgumentException(

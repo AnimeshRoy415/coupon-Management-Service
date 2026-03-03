@@ -20,7 +20,7 @@ public class ProductWiseStrategy implements DiscountStrategy {
 
         double totalDiscount = 0.0;
 
-        // 1️⃣ Expiry Check
+        // Expiry Check
         if (coupon.isExpired()) {
             throw new RuntimeException("Coupon Expired!");
         }
@@ -32,16 +32,14 @@ public class ProductWiseStrategy implements DiscountStrategy {
             throw new ConditionNotMeet("Invalid Product Wise Coupon Configuration");
         }
 
-        // 2️⃣ Apply discount only on matching product
+        // Apply discount only on matching product
         for (CartItem item : cart.getItems()) {
-            System.out.println("cart.getItems ::  "+item);
 
             if (item.getProductId().equals(productId)) {
 
                 double itemTotal = item.getPrice() * item.getQuantity();
                 double discount = itemTotal * (percentage / 100);
 
-                System.out.println("discount  :: "+ discount);
                 item.setTotalDiscount(discount);
                 totalDiscount += discount;
             }
@@ -51,7 +49,7 @@ public class ProductWiseStrategy implements DiscountStrategy {
 //            throw new ConditionNotMeet("Product not found in cart");
 //        }
 
-        // 3️⃣ Update cart totals
+        // Update cart totals
         double totalPrice = cart.getItems().stream()
                 .mapToDouble(i -> i.getPrice() * i.getQuantity())
                 .sum();

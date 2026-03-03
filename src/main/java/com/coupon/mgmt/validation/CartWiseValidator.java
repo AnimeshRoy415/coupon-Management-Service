@@ -16,7 +16,6 @@ public class CartWiseValidator implements CouponValidator{
     @Override
     public void validate(CouponDto dto) {
 
-        System.out.println("cartcart");
         DiscountDetails details = dto.getDetails();
 
         if (details.getThreshold() == null || details.getThreshold() <= 0) {
